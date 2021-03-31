@@ -49,7 +49,7 @@
 -include("inet_sctp.hrl").
 -include("inet_int.hrl").
 
-%%%-define(DEBUG, 1).
+-define(DEBUG, 1).
 -ifdef(DEBUG).
 -define(
    DBG_FORMAT(Format, Args),
