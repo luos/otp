@@ -43,7 +43,7 @@
 	 gethostname/1]).
 -export([getservbyname/3, getservbyport/3]).
 -export([peername/1, setpeername/2, peernames/1, peernames/2]).
--export([sockname/1, setsockname/2, socknames/1, socknames/2, hello/0]).
+-export([sockname/1, setsockname/2, socknames/1, socknames/2, test/0]).
 -export([attach/1, detach/1]).
 
 -include("inet_sctp.hrl").
