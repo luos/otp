@@ -522,6 +522,8 @@ static int my_strncasecmp(const char *s1, const char *s2, size_t n)
 #define  STRNCASECMP strncasecmp
 #endif
 
+#define DEBUGF(X) printf X
+
 #define INVALID_SOCKET -1
 #define INVALID_EVENT  -1
 #define SOCKET_ERROR   -1
@@ -13509,3 +13511,6 @@ int erts_sock_errno()
 {
     return sock_errno();
 }
+
+
+#undef DEBUGF
