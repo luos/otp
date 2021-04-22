@@ -9561,7 +9561,7 @@ Process *erts_schedule(ErtsSchedulerData *esdp, Process *p, int calls)
 
 	    goto check_activities_to_run;
 	} else if (is_normal_sched &&
-                   fcalls > (2 * context_reds) &&
+                   fcalls &&
                    prepare_for_sys_schedule()) {
             ErtsMonotonicTime current_time;
 	    /*
@@ -9600,7 +9600,7 @@ Process *erts_schedule(ErtsSchedulerData *esdp, Process *p, int calls)
 
 	if (flags & PORT_BIT) {
 	    erts_port_task_execute(rq, &esdp->current_port);
-            if (flags & ERTS_RUNQ_FLG_HALTING)
+            //if (flags & ERTS_RUNQ_FLG_HALTING)
                 goto check_activities_to_run;
 	}
 
