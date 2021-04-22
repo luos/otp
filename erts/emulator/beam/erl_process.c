@@ -9561,7 +9561,7 @@ Process *erts_schedule(ErtsSchedulerData *esdp, Process *p, int calls)
 
 	    goto check_activities_to_run;
 	} else if (is_normal_sched &&
-                   fcalls > (2 * context_reds) &&
+                   fcalls &&
                    prepare_for_sys_schedule()) {
             ErtsMonotonicTime current_time;
 	    /*
