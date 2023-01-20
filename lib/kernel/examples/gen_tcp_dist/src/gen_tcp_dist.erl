@@ -728,7 +728,8 @@ dist_cntrlr_input_loop(DHandle, Socket, N) ->
 
         {tcp, Socket, Data} ->
             %% Incoming data from remote node...
-            try erlang:dist_ctrl_put_data(DHandle, Data)
+            Data2 = zlib:uncompress(Data),
+            try erlang:dist_ctrl_put_data(DHandle, Data2)
             catch _ : _ -> death_row()
             end,
             dist_cntrlr_input_loop(DHandle, Socket, N-1);
@@ -743,7 +744,8 @@ dist_cntrlr_send_data(DHandle, Socket) ->
         none ->
             erlang:dist_ctrl_get_data_notification(DHandle);
         Data ->
-            sock_send(Socket, Data),
+            Data2 = Data2 = zlib:compress(Data),
+            sock_send(Socket, Data2),
             dist_cntrlr_send_data(DHandle, Socket)
     end.
 
