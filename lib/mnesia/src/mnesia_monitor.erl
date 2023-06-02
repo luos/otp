@@ -827,13 +827,7 @@ detect_inconcistency(Nodes, Context) ->
 
 has_remote_mnesia_down(Node) ->
     HasDown = mnesia_recover:has_mnesia_down(Node),
-    Master  = mnesia_recover:get_master_nodes(schema),
-    if
-	HasDown == true, Master == [] ->
-	    {true, node()};
-	true ->
-	    {false, node()}
-    end.
+    {HasDown, node()}.
 
 report_inconsistency([{true, Node} | Replies], Context, _Status) ->
     %% Oops, Mnesia is already running on the
